@@ -1,0 +1,30 @@
+<div class="footer clearfix">
+    <footer class="clearfix">
+        <div class="links col-3">
+            <ul>
+                <li>Pages</li>
+                {% for item in nav %}
+                    {% if item.getId() == 1 %} {# homepage #}
+                        <a href="{{ path('homepage') }}"><li {% if active_page == "home" %}class="selected"{% endif %}>{{ item.getTitle() }}</li></a>
+                    {% else %}
+                        <a href="{{ path('page', {'slug': item.getSlug(), 'id': item.getId()}) }}"><li {% if active_page == item.getTitle() %}class="selected"{% endif %}>{{ item.getTitle() }}</li></a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="links col-3">
+            <ul>
+                <li>Blog - Contact</li>
+                <a href="{{ path('blogHomepage') }}"><li>Blog</li></a>
+                <a href="{{ path('contact') }}"><li>Contact</li></a>
+            </ul>
+        </div>
+        <div class="links col-3">
+            <ul>
+                <li>Autre</li>
+                <a href="{{ path('login') }}"><li>Admin</li></a>
+            </ul>
+        </div>
+        <div class="top-btn">^</div>
+    </footer>
+</div>

@@ -1,0 +1,15 @@
+{% extends "layout.twig" %}
+
+{% set active_page = "contact" %}
+
+{% block body %}
+    <div class="content">
+        <h2>Contact</h2>
+
+        <div class="form">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "message" %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h2 class="sub-header">Message</h2>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"></span>#{{ message.getId() }} | {{ message.getTitle() }}</h3>
+        </div>
+        <div class="panel-body">
+            <p><span class="glyphicon glyphicon-calendar"></span> {{ message.getDate()|date('d/m/Y G:i') }} | <span class="glyphicon glyphicon-user"></span> {{ message.getMail() }}</p>
+            <h4>Contenu:</h4>
+            <p>{{ message.getContent() }}</p>
+        </div>
+    </div>
+
+    <h2>Répondre</h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

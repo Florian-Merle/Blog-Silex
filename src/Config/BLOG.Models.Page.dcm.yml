@@ -1,0 +1,30 @@
+BLOG\Models\Page:
+  type: entity
+  table: pages
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    title:
+      type: string
+      length: 255
+      column: title
+      nullable: false
+    slug:
+      type: string
+      length: 255
+      column: slug
+      nullable: false
+    content:
+      type: text
+      length: 4294967295
+      column: content
+      nullable: false
+    position:
+      type: integer
+      column: position
+      nullable: false

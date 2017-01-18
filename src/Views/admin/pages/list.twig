@@ -1,0 +1,42 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "page" %}
+
+{% block body %}
+    <h2 class="sub-header">Liste des pages</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Titre</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+                <th>Changer la position</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for page in pages %}
+            <tr>
+                <td>{{ page.getPosition() }}</td>
+                <td>{{ page.getTitle() }} {% if page.getId() == 1 %}// Page d'acceuil{% endif %}</td>
+                <td><a href="{{ path('adminPageEdit', {'id': page.getId()}) }}" class="btn btn-info">Editer</a></td>
+                <td>{% if page.getId() != 1 %}<a href="{{ path('adminPageDelete', {'id': page.getId()}) }}" id="delete" class="btn btn-danger">Supprimer</a>{% endif %}</td>
+                {% if page.getId() == 1 %}
+                    <td></td>
+                {% else %}
+                    {% if page.getPosition() == 2 %}
+                        <td><a href="#" class="btn disabled"><span class="glyphicon glyphicon-arrow-up"></span></a> <a href="{{ path('changePagePosition', {'id': page.getId(), 'action': 2}) }}" class="btn"><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    {% elseif page.getPosition() == positionMax %}
+                        <td><a href="{{ path('changePagePosition', {'id': page.getId(), 'action': 1}) }}" class="btn"><span class="glyphicon glyphicon-arrow-up"></span></a> <a href="#" class="btn disabled"><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    {% else %}
+                        <td><a href="{{ path('changePagePosition', {'id': page.getId(), 'action': 1}) }}" class="btn"><span class="glyphicon glyphicon-arrow-up"></span></a> <a href="{{ path('changePagePosition', {'id': page.getId(), 'action': 2}) }}" class="btn"><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('adminPageNew') }}" class="btn btn-success pull-right">Ajouter une page</a>
+{% endblock %}

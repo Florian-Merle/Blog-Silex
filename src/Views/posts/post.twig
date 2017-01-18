@@ -1,0 +1,38 @@
+{% extends "layout.twig" %}
+
+{% set active_page = "blog" %}
+
+{% block body %}
+    <div class="content">
+        <h2>Blog - Article</h2>
+        {% if post %}
+        <div>
+            <h3>{{ post.getTitle() }}</h3>
+            <span class="info"><span class="icon icon-calendar"></span>Le {{ post.getDate()|date('d/m/Y G:i') }}</span>
+            <span class="info"><span class="icon icon-user"></span>Par {{ post.getUser().getUsername() }}</span>
+            <div class="content">
+                {{ post.getContent()|raw }}
+            </div>
+            <hr>
+            <div class="comments">
+                <h4>Commentaires</h4>
+                <div class="form">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+                {% if post.getComments() %}
+                    {% for comment in post.getComments() %}
+                        <div class="comment">
+                            <p>Date: <em>{{ comment.getDate()|date('d/m/Y G:i') }}</em>, par <em>{{ comment.getUsername() }}</em></p>
+                            <p>{{ comment.getContent() }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+            <p>L'article n'a pas été trouvé.<p><a href="{{ path('blogHomepage') }}"> Retour au blog</a>
+        {% endif %}
+    </div>
+{% endblock %}

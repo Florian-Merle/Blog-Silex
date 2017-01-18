@@ -1,0 +1,137 @@
+{% extends "adminLayout.twig" %}
+
+{% block body %}
+    <h2 class="sub-header">Accueil</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pages</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th>Editer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for page in pages %}
+                            <tr>
+                                <td>{{ page.getPosition() }}</td>
+                                <td>{{ page.getTitle() }}</td>
+                                <td><a href="{{ path('adminPageEdit', {'id': page.getId()}) }}" class="btn btn-info">Editer</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('adminPagesList') }}" class="btn btn-success">Consulter les pages</a>
+                    <a href="{{ path('adminPageNew') }}" class="btn btn-success">Nouvelle page</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Messages non lu</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th>Date</th>
+                            <th>Consulter</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for message in messages %}
+                            <tr>
+                                <td>{{ message.getId() }}</td>
+                                <td>{{ message.getTitle() }}</td>
+                                <td>{{ message.getDate()|date('d/m/Y G:i') }}</td>
+                                <td><a href="{{ path('adminViewMessage', {'id': message.getId()}) }}" class="btn btn-info">Consulter le message</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('adminMessagesListMain') }}" class="btn btn-success">Consulter tous les messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Derniers articles</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th>Date</th>
+                            <th>Editer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.getId() }}</td>
+                            <td>{{ post.getTitle() }}</td>
+                            <td>{{ post.getDate()|date('d/m/Y G:i') }}</td>
+                            <td><a href="{{ path('adminPostEdit', {'id': post.getId()}) }}" class="btn btn-info">Editer</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('adminPostsListMain') }}" class="btn btn-success">Consulter les  articles</a>
+                    <a href="{{ path('adminPostNew') }}" class="btn btn-success">Nouvel article</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Derniers commentaires</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Pseudo</th>
+                            <th>Date</th>
+                            <th>Consulter</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td>{{ comment.getId() }}</td>
+                                <td>{{ comment.getUsername() }}</td>
+                                <td>{{ comment.getDate()|date('d/m/Y G:i') }}</td>
+                                <td><a href="{{ path('adminPostEditCommentPost', {'id': comment.getId()}) }}" class="btn btn-info">Consulter commentaire</a>
+                                    <a href="{{ path('adminPostCommentsList', {'id': comment.getPost().getId()}) }}" class="btn btn-info">Consulter article</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

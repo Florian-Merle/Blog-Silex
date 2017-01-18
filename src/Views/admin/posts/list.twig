@@ -1,0 +1,60 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "post" %}
+
+{% block body %}
+    <h2 class="sub-header">Liste des articles</h2>
+
+    {% if posts %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Auteur</th>
+                <th>Brouillon</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+                <th>Consulter les commentaires</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.getId() }}</td>
+                    <td>{{ post.getTitle() }}</td>
+                    <td>{{ post.getDate()|date('d/m/Y G:i') }}</td>
+                    <td>{{ post.getUser().getUsername() }}</td>
+                    <td>{% if post.getIsadraft() == 0 %}<span class="glyphicon glyphicon-unchecked"></span>{% else %}<span class="glyphicon glyphicon-check"></span>{% endif %}
+                        <a href="{{ path('adminPostToggleIsADraft', {'id': post.getId() }) }}" class="btn btn-info">Changer l'état</a></td>
+                    <td><a href="{{ path('adminPostEdit', {'id': post.getId()}) }}" class="btn btn-info">Editer</a></td>
+                    <td><a href="{{ path('adminDeletePost', {'id': post.getId() }) }}" id="delete" class="btn btn-danger">Supprimer</a></td>
+                    <td><a href="{{ path('adminPostCommentsList', {'id': post.getId()}) }}" id="comments" class="btn btn-info">Consulter les commentaires</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="pagination">
+            {% if currentPage == 1 %}
+                <li class="disabled"><a href="#">«</a></li>
+            {% else %}
+                <li><a href="{{ path('adminPostsList', {'page': 1}) }}">«</a></li>
+            {% endif %}
+            {% for i in 1..pageMax  %}
+                <li {% if currentPage == i %}class="active"{% endif %}><a href="{{ path('adminPostsList', {'page': i}) }}">{{ i }}</a></li>
+            {% endfor %}
+            {% if currentPage == pageMax %}
+                <li class="disabled"><a href="#">»</a></li>
+            {% else %}
+                <li><a href="{{ path('adminPostsList', {'page': pageMax}) }}">»</a></li>
+            {% endif %}
+        </ul>
+
+        <a href="{{ path('adminPostNew') }}" class="btn btn-success pull-right">Ecrire un nouvel article</a>
+    {% else %}
+        <p>Aucuns articles pour cette page. <a href="{{ path('adminPostsListMain') }}">Retour au début</a></p>
+    {% endif %}
+
+{% endblock %}

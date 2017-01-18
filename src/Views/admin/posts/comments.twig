@@ -1,0 +1,48 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "post" %}
+
+{% block body %}
+    <h2 class="sub-header">Liste des commentaires</h2>
+
+    <h3>Résumé de l'article</h3>
+
+    <a href="{{ path('adminPostEdit', {'id': post.getId()}) }}" class="btn btn-info">Editer l'article</a>
+    <hr>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ post.getTitle() }}</h3>
+        </div>
+        <div class="panel-body">
+            {{ post.getContent()|raw }}
+        </div>
+    </div>
+
+    <h3>Commentaires</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Pseudo</th>
+            <th>Contenu</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in post.getComments() %}
+            <tr>
+                <td>{{ comment.getId() }}</td>
+                <td>{{ comment.getDate()|date('d/m/Y G:i') }}</td>
+                <td>{{ comment.getUsername() }}</td>
+                <td>{{ comment.getContent() }}</td>
+                <td><a href="{{ path('adminPostEditComment', {'id': comment.getId()}) }}" class="btn btn-info">Editer</a></td>
+                <td><a href="{{ path('adminPostDeleteComment', {'id': comment.getId() }) }}" id="delete" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

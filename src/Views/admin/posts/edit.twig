@@ -1,0 +1,19 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "post" %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h2 class="sub-header">Editer un article</h2>
+
+    {% if post  %}
+        <a href="{{ path('adminPostCommentsList', {'id': post.getId()}) }}" class="btn btn-info">Consulter les commentaires</a>
+        <hr>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

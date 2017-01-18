@@ -1,0 +1,16 @@
+{% set active_page = active_page|default('home') %}
+<div class="menu clearfix">
+    <div class="col-12">
+        <ul>
+            {% for item in nav %}
+                {% if item.getId() == 1 %} {# homepage #}
+                    <a href="{{ path('homepage') }}"><li {% if active_page == "home" %}class="selected"{% endif %}>{{ item.getTitle() }}</li></a>
+                {% else %}
+                    <a href="{{ path('page', {'slug': item.getSlug(), 'id': item.getId()}) }}"><li {% if active_page == item.getTitle() %}class="selected"{% endif %}>{{ item.getTitle() }}</li></a>
+                {% endif %}
+            {% endfor %}
+            <a href="{{ path('blogHomepage') }}"><li {% if active_page == "blog" %}class="selected"{% endif %}>Blog</li></a>
+            <a href="{{ path('contact') }}"><li {% if active_page == "contact" %}class="selected"{% endif %}>Contact</li></a>
+        </ul>
+    </div>
+</div>

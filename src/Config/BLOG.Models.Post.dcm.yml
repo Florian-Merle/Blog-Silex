@@ -1,0 +1,41 @@
+BLOG\Models\Post:
+  type: entity
+  table: posts
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    title:
+      type: string
+      length: 255
+      column: title
+      nullable: false
+    date:
+      type: datetime
+      column: date
+      nullable: false
+    content:
+      type: text
+      length: 65535
+      column: content
+      nullable: false
+    isadraft:
+      type: boolean
+      column: is_a_draft
+      nullable: false
+
+  manyToOne:
+    user:
+      targetEntity: User
+      joinColumn:
+        name: Use_id
+        referencedColumnName: id
+
+  oneToMany:
+    comments:
+      targetEntity: Comment
+      mappedBy: post

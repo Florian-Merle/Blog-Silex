@@ -1,0 +1,12 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "page" %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h2 class="sub-header">Editer une page</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

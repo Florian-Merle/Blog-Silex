@@ -1,0 +1,34 @@
+BLOG\Models\ContactMessage:
+  type: entity
+  table: contactmessages
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    title:
+      type: string
+      length: 255
+      column: title
+      nullable: false
+    date:
+      type: datetime
+      column: date
+      nullable: false
+    content:
+      type: text
+      length: 65535
+      column: content
+      nullable: false
+    mail:
+      type: string
+      length: 255
+      column: mail
+      nullable: false
+    viewed:
+      type: boolean
+      column: viewed
+      nullable: false

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Blog - Silex</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="{{ app.request.getBaseUrl() }}/web/css/grid.css" />
+    <link rel="stylesheet" href="{{ app.request.getBaseUrl() }}/web/css/style.css" />
+    <link rel="stylesheet" href="{{ app.request.getBaseUrl() }}/web/css/icomoon/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    <!-- jquerry - js & matching css -->
+    <script type="text/javascript" src="{{ app.request.getBaseUrl() }}/web/js/jquery.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseUrl() }}/web/js/easing.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseUrl() }}/web/js/app.js"></script>
+</head>
+    <body>
+        <div class="container">
+            <div class="header clearfix">
+                <a href="{{ path('homepage') }}">
+                    <div class="col-2">
+                        <div class="logo">Blog</div>
+                    </div>
+                    <div class="col-10">
+                        <h1>Blog</h1>
+                        <h2>Tp silex</h2>
+                    </div>
+                </a>
+            </div>
+
+            {% include "nav.twig" %}
+
+            <div class="content clearfix">
+                <div class="col-12">
+                    {% for alert in app.session.flashbag.get('flash') %}
+                        <div class="alert">{{ alert }}</div>
+                    {% endfor %}
+
+                    {% block body %}{% endblock body %}
+                </div>
+            </div>
+
+            {% include "footer.twig" %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,465 @@
+											/* http://meyerweb.com/eric/tools/css/reset/
+											   v2.0 | 20110126
+											   License: none (public domain)
+											*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,f
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+												/* css reset*/
+
+												/* typographie */
+
+body  {
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+p, ul, blockquote { margin-bottom: 1.5em; }
+
+h1, h2, h3, h4, h5, h6 { margin-bottom: 24px; }
+
+h1 { font-size: 1.5em; }
+
+h2 { font-size: 1.325em; }
+
+h3 { font-size: 1.225em; }
+
+h4 { font-size: 1.125em; }
+
+h5 { font-size: 1em; }
+
+h6 { font-size: 1em; }
+
+ul {
+	list-style: circle;
+	margin-left: 40px;
+	margin-bottom: 24px;
+}
+
+ol {
+	list-style: decimal;
+	margin-left: 40px;
+	margin-bottom: 24px;
+}
+
+blockquote {
+	font-style: italic;
+	padding: 12px;
+	margin-left: 40px;
+	border-left: 3px solid #0099E5;
+	padding-left: 20px;
+	font-family: Kreon;
+	font-size: 18px;
+	background-color: #E5E5E5;
+
+	box-shadow: 0 0 10px #E5E5E5;
+}
+
+blockquote p {
+	margin-bottom: 0px;
+}
+
+blockquote strong {
+	display: block;
+	text-align: right;
+	font-style: normal;
+
+}
+
+blockquote strong:before {
+	content: '—';
+}
+
+body {
+	background-image: url('img/kindajean.png');
+	font-family: 'Noto Sans', sans-serif;
+	color: #262626;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, li, a {
+	font-family: 'Roboto Slab', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #0099E5;
+}
+
+a {
+	color: #838383;
+}
+
+a:hover {
+	color: #0099E5;
+}
+											/* typographie */
+
+.container {
+    width: 960px;
+    box-sizing: content-box;
+    margin: 50px auto 50px auto;
+    padding: 40px;
+    padding-bottom: 0;
+
+    background-color: #FFFFFF;
+	box-shadow: 0 0 20px #555555;
+
+    display: none;
+}
+
+.header {
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+.header .logo {
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    color: #FFFFFF;
+
+	background-color: #0099E5;
+	border-radius: 40px;
+    margin: auto;
+
+	box-shadow: 0 0 10px #838383;
+
+    transition: .25s;
+}
+
+
+.header:hover .logo {
+    background-color: #838383;
+}
+
+.header h1 {
+    margin-top: 7px;
+
+    transition: .25s;
+}
+
+.header h2 {
+    transition: .25s;
+}
+
+.header:hover h1, .header:hover h2 {
+    color: #838383;
+}
+
+.menu .col-12 {
+    margin-left: -40px;
+    margin-bottom: 20px;
+    width: 1040px;
+    height: 60px;
+    padding: 0;
+
+	background-color: #E5E5E5;
+	box-shadow: 0 0 10px #aaa inset;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin-right: px;
+    padding-left: 20px; padding-right: 20px;
+    line-height: 57px;
+
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    transition: .25s;
+}
+
+.menu ul a:hover li, .menu .selected{
+    color: #FFFFFF;
+	background-color: #838383;
+	border-bottom: 3px solid #0099E5;
+}
+
+.slider {
+	box-shadow: 0 0 5px #787878;
+    margin-bottom: 20px;
+}
+
+.slider .dots {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.slider .dots span {
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid #E5E5E5;
+  margin: 0 3px 0 3px;
+  background-color: transparent;
+  box-shadow: 0 0 5px #555555;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.slider .dots span.selected {
+  background-color: #E5E5E5;
+}
+
+.sidebar {
+    border-left: 1px solid #E5E5E5;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+footer {
+	background-color: #262626;
+	color: #FFF;
+    margin: 20px -40px 0 -40px;
+
+	box-shadow: 0 0 10px #3D3D3D inset;
+}
+
+footer .links {
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.footer .links a {
+    text-decoration: none;
+}
+
+footer .links ul {
+    list-style: none;
+}
+
+.top-btn{
+	width: 30px;
+	height: 30px;
+	background-color: #0099E5;
+	float: right;
+	margin-right: 60px;
+	text-align: center;
+	line-height: 33px;
+	font-size: 20px;
+
+	cursor: pointer;
+
+	transition: 0.4s;
+}
+
+.top-btn:hover {
+	background-color: #838383;
+}
+
+.portfolio .item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.portfolio .item .img {
+    position: relative;
+    height: 300px;
+    width: 400px;
+    margin: auto;
+
+    transition-delay: .25s;
+}
+
+.portfolio .item .img img {
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+
+	box-shadow: 0 0 5px #787878;
+
+    z-index: 1;
+}
+
+.portfolio .item .img h4 {
+    position: absolute;
+    bottom: -15px; left: 0; right: 0;
+    text-align: center;
+
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+
+    z-index: 2;
+}
+
+.portfolio .item .description {
+    position: absolute;
+    top: 20px; bottom: 20px; right: 60px; left: 60px;
+    padding: 20px;
+
+    background-color: #E5E5E5;
+    box-shadow: 0 0 10px #aaa inset;
+
+    transition: .25s;
+    z-index: 0;
+}
+
+.portfolio a:hover .description {
+    color: #838383;
+    z-index: 3;
+}
+
+.portfolio a:nth-child(2n) .description {
+    padding-left: 30px;
+}
+
+.portfolio a:nth-child(2n+1) .description {
+    padding-right: 30px;
+}
+
+.portfolio a:nth-child(2n):hover .description {
+    left: 430px; right: -310px;
+    z-index: 10;
+}
+
+.portfolio a:nth-child(2n+1):hover .description {
+    left: -310px; right: 430px;
+    z-index: 10;
+}
+
+.portfolio a:nth-child(2n):hover .img {
+    z-index: 12;
+    transition-delay: 0s;
+}
+
+.portfolio a:nth-child(2n+1):hover .img {
+    z-index: 12;
+    transition-delay: 0s;
+}
+
+.post {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #8C8681;
+}
+
+.post .info {
+    color: #838383;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.post .info .icon {
+    margin-right: 10px;
+}
+
+.paginate {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.paginate ul li {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #E5E5E5;
+    line-height: 25px;
+    text-align: center;
+    height: 25px;
+    width: 25px;
+
+    transition: 0.4s;
+}
+
+.paginate ul li a {
+    color: #838383;
+    text-decoration: none;
+}
+
+.paginate ul .selected {
+    background-color: #0099E5;
+}
+
+.paginate ul a .selected {
+    color: #FFF;
+}
+
+.paginate ul li:hover{
+    background-color: #E5E5E5;
+    color: #838383;
+}
+
+.paginate ul .selected:hover{
+    background-color: #0099E5;
+    color: #FFF;
+}
+.form form {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #aaa;
+}
+
+.form label{
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: right;
+}
+.form input, .form textarea {
+    width: 500px;
+}
+
+.form button[type="submit"] {
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: center;
+}
+
+.comment {
+    border-bottom: 1px dashed #aaa;
+}

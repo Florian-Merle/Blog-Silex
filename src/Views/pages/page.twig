@@ -1,0 +1,23 @@
+{% extends "layout.twig" %}
+
+{% if page %}
+    {% if page.getPosition() == 1 %}
+        {% set active_page = 'home' %}
+    {% else %}
+        {% set active_page = page.getTitle() %}
+    {% endif %}
+{% else %}
+    {% set active_page = 'error' %}
+{% endif %}
+
+{% block body %}
+    <div class="content">
+    {% if page %}
+        <h2>{{ page.getTitle() }}</h2>
+        {{ page.getContent()|raw }}
+    {% else %}
+        <h1>Erreur</h1>
+        <p>Erreur avec la page</p>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "adminLayout.twig" %}
+
+{% set active_page = "message" %}
+
+{% block body %}
+    <h2 class="sub-header">Liste des messages reçus</h2>
+
+    {% if messages %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Par</th>
+                <th>Etat</th>
+                <th>Changer l'état</th>
+                <th>Consulter</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for message in messages %}
+                <tr>
+                    <td>{{ message.getId() }}</td>
+                    <td>{{ message.getTitle() }}</td>
+                    <td>{{ message.getDate()|date('d/m/Y G:i') }}</td>
+                    <td>{{ message.getMail() }}</td>
+                    <td>{% if message.getViewed() == 0 %}<span class="glyphicon glyphicon-unchecked"></span>{% else %}<span class="glyphicon glyphicon-check"></span>{% endif %}</td>
+                    <td><a href="{{ path('adminToggleMessageState', {'id': message.getId()}) }}" class="btn btn-warning">{% if message.getViewed() == 0 %}Marquer comme lu</a>{% else %}Marquer comme non lu{% endif %}</a></td>
+                    <td><a href="{{ path('adminViewMessage', {'id': message.getId()}) }}" class="btn btn-info">Consulter</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="pagination">
+            {% if currentPage == 1 %}
+                <li class="disabled"><a href="#">«</a></li>
+            {% else %}
+                <li><a href="{{ path('adminMessagesList', {'page': 1}) }}">«</a></li>
+            {% endif %}
+            {% for i in 1..pageMax  %}
+                <li {% if currentPage == i %}class="active"{% endif %}><a href="{{ path('adminMessagesList', {'page': i}) }}">{{ i }}</a></li>
+            {% endfor %}
+            {% if currentPage == pageMax %}
+                <li class="disabled"><a href="#">»</a></li>
+            {% else %}
+                <li><a href="{{ path('adminMessagesList', {'page': pageMax}) }}">»</a></li>
+            {% endif %}
+        </ul>
+
+        <a href="{{ path('adminAllMessagesRead') }}" class="btn btn-success pull-right">Tout marquer comme lu</a>
+    {% else %}
+        <p>Aucuns messages pour cette page <a href="{{ path('adminMessagesListMain') }}">Retour au début</a></p>
+    {% endif %}
+
+{% endblock %}

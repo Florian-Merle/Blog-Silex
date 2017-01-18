@@ -1,0 +1,33 @@
+BLOG\Models\Comment:
+  type: entity
+  table: comments
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    username:
+      type: string
+      length: 255
+      column: username
+      nullable: false
+    date:
+      type: datetime
+      column: date
+      nullable: false
+    content:
+      type: text
+      length: 65535
+      column: content
+      nullable: false
+
+  manyToOne:
+    post:
+      targetEntity: Post
+      inversedBy: comments
+      joinColumn:
+        name: Pos_id
+        referencedColumnName: id

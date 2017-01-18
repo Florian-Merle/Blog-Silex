@@ -1,0 +1,26 @@
+BLOG\Models\User:
+  type: entity
+  table: users
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    username:
+      type: string
+      length: 255
+      column: username
+      nullable: false
+    password:
+      type: string
+      length: 255
+      column: password
+      nullable: false
+
+  oneToMany:
+    posts:
+      targetEntity: Post
+      mappedBy: user

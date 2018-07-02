@@ -1,4 +1,4 @@
-# blog-silex
+# Blog Silex
 
 School Project made using:
 - MySQL
